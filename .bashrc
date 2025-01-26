@@ -149,3 +149,9 @@ alias mv='mv -i'                # Confirm before overwriting
 alias rm='rm -i'                # Confirm before removing
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 eval "$(zoxide init bash)"
+# Autocomplete.sh
+source autocomplete enable
+
+# Autocomplete.sh CLI
+complete -F _autocompletesh_cli autocomplete
+
