@@ -8,7 +8,7 @@ case $- in
       *) return;;
 esac
 set -o vi
-export PATH=$PATH:/home/niels/.fzf/bin
+export PATH=$PATH:/home/niels/.fzf/bin:/home/niels/.local/bin
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -130,3 +130,28 @@ eval "$(starship init bash)"
 tmux attach -t main || tmux new -s main
 
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+shopt -s histverify              # Review history expansion before executing
+shopt -s cmdhist                 # Store multi-line commands in one history entry
+
+# Improved shell options
+shopt -s autocd                  # Change directory without 'cd'
+shopt -s cdspell                 # Auto-correct minor spelling errors in cd
+shopt -s dirspell                # Auto-correct directory spelling
+shopt -s nocaseglob             # Case-insensitive globbing
+shopt -s checkjobs              # Warn about running jobs on shell exit
+
+# Useful aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias mkdir='mkdir -p'           # Create parent directories by default
+alias df='df -h'                 # Human-readable sizes
+alias free='free -h'            # Human-readable sizes
+alias cp='cp -i'                # Confirm before overwriting
+alias mv='mv -i'                # Confirm before overwriting
+alias rm='rm -i'                # Confirm before removing
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+eval "$(zoxide init bash)"
